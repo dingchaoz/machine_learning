@@ -228,7 +228,7 @@ def shiftDetectCont(data):
 
 
 
-# In[31]:
+# In[47]:
 
 #### Function to get detect concept change for attributes data
 #### Assign char a,b,c to uniformly distributed value seperately for all data points first
@@ -281,16 +281,20 @@ def shiftDetectAtt(lines):
     #LCL = mean - 3*np.sqrt(mean*(1-mean)/(n+1)) # Lower control limit in P chart,does not work for negtriple, tripledouble
     UCL = mean + 3*sd # Upper control limit in Shewart method
     LCL = mean - 3*sd # Lower control limit in Shewart method
-
+    UWL = mean + 2*sd # Upper control limit in Shewart method
+    LWL = mean - 2*sd # Lower control limit in Shewart method
 
     print("mean is in Shewart method:" + str(mean)) # Print the mean value of the control chart
     print("UCL is in Shewart method: " + str(UCL))  # Print the UCL value of the control chart
     print("LCL is in Shewart method: " + str(LCL))  # Print the LCL value of the control chart
+    print("UWL is in Shewart method: " + str(UWL))  # Print the UCL value of the warning chart
+    print("LWL is in Shewart method: " + str(LWL))  # Print the LCL value of the warning chart
     print(str(range(t+1,len(sample))))
     print(str(sample[5]))
     
     #N = [] # Array to record outside threhold points index in a trend
-    n = 0 # index starts from 0 which means not a point outsidte threshold
+    n = 0 # index starts from 0 which means not a point outsidte control threshold
+    m = 0 # index starts from 0 which means not a point outsidte warning threshold
     ## Detect if there is concept change occurs after the baseline sample points
     for i in range(t+1,len(sample)):
         if (sample[i] >= UCL) | (sample[i] <= LCL): # If there is a point outside threshold
@@ -305,13 +309,36 @@ def shiftDetectAtt(lines):
                 plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
                 plt.text(1, UCL - 0.05, 'UCL',color='r') # Label out UCL 
                 plt.text(1, LCL + 0.05, 'LCL',color='r') # Label out LCL 
+                plt.plot([0, len(sample)], [UWL, UWL], 'r--', color='r')  # Plot the Upper Warning Limit
+                plt.plot([0, len(sample)], [LWL, LWL], 'r--', color='r') # Plot the Lower Warning LIMIT
+                plt.text(1, UWL - 0.05, 'UWL',color='r') # Label out UWL 
+                plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LWL 
                 plt.title("Converted Variable Plot from Original Attributes Data,Change Ocurred")
                 plt.show()
-                return i-2
+                return i - 2
+        elif (sample[i] >= UWL) | (sample[i] <= LWL): # If there is a point outside warning threshold:
+            m = m + 1
+            if m == 5: # If it is the consecutive 3rd point that is outside threshold
+                print("Concept change occured at position " + str((i-4)*(n+1)) + "of original attributes data")
+                print("That corresponds to the "+str(i-2)+"th position on the converted data graph below")
+                print("The change occur sample value is"+str(sample[i-4]))
+                plt.plot(sample) # Plot the converted variable smaple data 
+                plt.plot([0, len(sample)], [UCL, UCL], 'r--', color='r')  # Plot the Upper Control Limit
+                plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
+                plt.text(1, UCL - 0.05, 'UCL',color='r') # Label out UCL 
+                plt.text(1, LCL + 0.05, 'LCL',color='r') # Label out LCL
+                plt.plot([0, len(sample)], [UWL, UWL], 'r--', color='r')  # Plot the Upper Warning Limit
+                plt.plot([0, len(sample)], [LWL, LWL], 'r--', color='r') # Plot the Lower Warning LIMIT
+                plt.text(1, UWL - 0.05, 'UWL',color='r') # Label out UWL 
+                plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LWL 
+                plt.title("Converted Variable Plot from Original Attributes Data,Change Ocurred")
+                plt.show()
+                return i - 4
         else:
             n = 0
+            m = 0
         
-            
+    shiftDetectCont(sample)       
     
     print("No Change")
     plt.plot(sample) # Plot the converted variable smaple data 
@@ -319,13 +346,22 @@ def shiftDetectAtt(lines):
     plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
     plt.text(1, UCL - 0.05, 'UCL',color='r') # Label out UCL 
     plt.text(1, LCL + 0.05, 'LCL',color='r') # Label out LCL 
+    plt.plot([0, len(sample)], [UWL, UWL], 'r--', color='r')  # Plot the Upper Control Limit
+    plt.plot([0, len(sample)], [LWL, LWL], 'r--', color='r') # Plot the Lower Control LIMIT
+    plt.text(1, UWL - 0.05, 'UWL',color='r') # Label out UCL 
+    plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LCL 
     plt.title("Converted Variable Plot from Original Attributes Data")
     plt.show()
 
     return -1
 
 
-# In[39]:
+
+
+  
+
+
+# In[48]:
 
 ## Definition of shiftDetect(data)
 
@@ -365,7 +401,7 @@ def shiftDetect(path):
     
 
 
-# In[40]:
+# In[49]:
 
 import os
 shiftDetect(os.getcwd())
