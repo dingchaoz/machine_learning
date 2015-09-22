@@ -1,7 +1,7 @@
 
 # coding: utf-8
 
-# In[26]:
+# In[1]:
 
 # import libraries
 get_ipython().magic('matplotlib inline')
@@ -42,7 +42,7 @@ import matplotlib.pyplot as plt
 #     data = lines # Otherwise for attribute data, no convert needed     
 # shiftDetect(data)
 
-# In[34]:
+# In[2]:
 
 #### Use Hawkins CUSUM Method described in http://rmgsc.cr.usgs.gov/outgoing/threshold_articles/Hawkins_Zamba2005b.pdf
 #### and in Douglas C. Montgomery Statistical Quality Control 6th Edition Page 400-Page 417 Chapter Time-Weighted Control Charts
@@ -53,7 +53,7 @@ import matplotlib.pyplot as plt
 #### Seperate k and H values are used for mean and var shift detection
 #### Usage example: data = np.loadtxt("posShiftUpVar_70.txt", delimiter=",") shiftDetect(data)
 
-def shiftDetectCont(data):
+def CUSUMDetect(data):
     
     cusums_mean_up = []   # Ci array for mean upper shift detection
     N_mean_up = [] # N+ array for mean upper shift detection
@@ -228,7 +228,7 @@ def shiftDetectCont(data):
 
 
 
-# In[47]:
+# In[7]:
 
 #### Function to get detect concept change for attributes data
 #### Assign char a,b,c to uniformly distributed value seperately for all data points first
@@ -242,7 +242,7 @@ def shiftDetectCont(data):
 #### t: The first t data points be selected as baseline
 ## posTriple2_160,posTriple_175, posTripleDouble_175, negTriple,negWithRare,negBinary Verified
 
-def shiftDetectAtt(lines):
+def AttrToCont(lines):
     
     np.random.seed(123456789)
 
@@ -271,6 +271,13 @@ def shiftDetectAtt(lines):
             sample.append(sum(data[i*n+1:(i+1)*n])/(n+1))  # Append the average values of each n+1 data points
 
     print("Converted variable values are" + str(sample))
+    
+    return sample
+
+
+# In[8]:
+
+def shewartDetect(sample):
 
     t = 4 # Choose the first t+1 numbers of sample points as baseline
 
@@ -315,7 +322,7 @@ def shiftDetectAtt(lines):
                 plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LWL 
                 plt.title("Converted Variable Plot from Original Attributes Data,Change Ocurred")
                 plt.show()
-                return (i - 2)*((n+1))
+                return (i - 2)*(n+1)
         elif (sample[i] >= UWL) | (sample[i] <= LWL): # If there is a point outside warning threshold:
             m = m + 1
             if m == 5: # If it is the consecutive 3rd point that is outside threshold
@@ -337,8 +344,8 @@ def shiftDetectAtt(lines):
         else:
             n = 0
             m = 0
-        
-    shiftDetectCont(sample)       
+    
+         
     
     print("No Change")
     plt.plot(sample) # Plot the converted variable smaple data 
@@ -356,12 +363,37 @@ def shiftDetectAtt(lines):
     return -1
 
 
+# In[26]:
+
+## Function used to detect concept change for continous variable data stream
+
+def shiftDetectCont(data):
+    
+    #shewartDetect(data)  # Use Shewart Control Chart to detect any concept change first
+    
+    #if (shewartDetect(data) == -1): # If no change detected by Shewart control chart
+        
+        #return CUSUMDetect(data)  # Then use CUSUM to detect any concept change first
+    
+    #else:
+        
+    return CUSUMDetect(data)
 
 
-  
+# In[27]:
+
+## Function used to detect concept change for continous variable data stream
+
+def shiftDetectAtt(data):
+    
+    sample = AttrToCont(data) # Convert attribute data to continous variable data, and store them in sample variable
+    
+    shewartDetect(sample) # Then apply continous data detection function on converted continous data
+    
+    return shewartDetect(sample)
 
 
-# In[48]:
+# In[23]:
 
 ## Definition of shiftDetect(data)
 
@@ -386,7 +418,7 @@ def shiftDetect(path):
         f.close() # Close file
         output.append(files[i])
         try:
-            data = [float(i) for i in lines] # For variable dataa stream,convert data string to float if convertable
+            data = [float(i) for i in lines] # For variable data stream,convert data string to float if convertable
             shiftDetectCont(data) # Apply continous detection function to see if concept changes
             output.append(shiftDetectCont(data))
         except: 
@@ -396,12 +428,8 @@ def shiftDetect(path):
     
     print(output)
 
-        
-        
-    
 
-
-# In[6]:
+# In[28]:
 
 import os
 shiftDetect(os.getcwd())
