@@ -129,11 +129,13 @@ def CUSUMDetect(data):
                 print("Mean shifted up at position " + str(c_i))
 
                 #print("CUSUM = " + str(cusums_mean_up))
+                '''
                 plt.plot(cusums_mean_up)
                 plt.plot([c_i, c_i], [data[c_i]+1, 0], 'r--', color='y')  # Plot the change line
                 plt.text(c_i, data[c_i] - 0.05, 'Change position',color='y') # Label out change position
                 plt.title("CUSUM of MEAN UP " + str(c_i) + " observations")
                 plt.show()
+                '''
                 return c_i
         
         if cusum_mean_lo > H:
@@ -142,11 +144,13 @@ def CUSUMDetect(data):
             if c_i > 50:
                 print("Mean shifted down at position " + str(c_i))
                 #print("CUSUM = " + str(cusums_mean_lo))
+                '''
                 plt.plot(cusums_mean_lo)
                 plt.plot([c_i, c_i], [data[c_i]+1, 0], 'r--', color='y')  # Plot the change line
                 plt.text(c_i, data[c_i] - 0.05, 'Change position',color='y') # Label out change position
                 plt.title("CUSUM of MEAN DOWN" + str(c_i) + " observations")
                 plt.show()
+                '''
                 return c_i
         
         
@@ -156,11 +160,13 @@ def CUSUMDetect(data):
             if c_i > 50:
                 print("Variance shifted up at position " + str(c_i))
                 #print("CUSUM = " + str(cusums_var_up))
+                '''
                 plt.plot(cusums_var_up)
                 plt.plot([c_i, c_i], [data[c_i]+1, 0], 'r--', color='y')  # Plot the change line
                 plt.text(c_i, data[c_i] - 0.05, 'Change position',color='y') # Label out change position
                 plt.title("CUSUM of VAR up" + str(c_i) + " observations")
                 plt.show()
+                '''
                 return c_i
         
         if cusum_var_lo > H_v:
@@ -169,11 +175,13 @@ def CUSUMDetect(data):
             if c_i > 50:
                 print("Variance shifted down at position " + str(c_i))
                 #print("CUSUM = " + str(cusums_var_lo))
+                '''
                 plt.plot(cusums_var_lo)
                 plt.plot([c_i, c_i], [data[c_i]+1, 0], 'r--', color='y')  # Plot the change line
                 plt.text(c_i, data[c_i] - 0.05, 'Change position',color='y') # Label out change position
                 plt.title("CUSUM of VAR down" + str(c_i) + " observations")
                 plt.show()
+                '''
                 return c_i
         
        
@@ -258,7 +266,8 @@ def shewartDetect(sample,s):
                 
                 #print("That corresponds to the "+str(i-2)+"th position on the converted data graph below")
                 #print("The change occur sample value is"+str(sample[i-3]))
-                plt.plot(sample[:i]) # Plot the converted variable smaple data 
+                '''
+                plt.plot(sample[:i]) # Plot the converted variable smaple data
                 plt.plot([0, len(sample)], [UCL, UCL], 'r--', color='r')  # Plot the Upper Control Limit
                 plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
                 plt.text(1, UCL - 0.05, 'UCL',color='r') # Label out UCL 
@@ -271,6 +280,7 @@ def shewartDetect(sample,s):
                 plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LWL 
                 plt.title("Change Ocurred because 3 consective points outsidte UCL OR LCL")
                 plt.show()
+                '''
                 if s == True:
                     print("Concept change occured at position " + str((i-3)*(n+1)*3) + " of original attributes data")
                     return (i - 3)*(n+1)*3
@@ -283,7 +293,8 @@ def shewartDetect(sample,s):
                 
                 #print("That corresponds to the "+str(i-2)+"th position on the converted data graph below")
                 #print("The change occur sample value is"+str(sample[i-4]))
-                plt.plot(sample[:i]) # Plot the converted variable smaple data 
+                '''
+                plt.plot(sample[:i]) # Plot the converted variable smaple data
                 plt.plot([0, len(sample)], [UCL, UCL], 'r--', color='r')  # Plot the Upper Control Limit
                 plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
                 plt.plot([i-4, i-4], [sample[i]+1, 0], 'r--', color='y')  # Plot the change line
@@ -296,6 +307,7 @@ def shewartDetect(sample,s):
                 plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LWL 
                 plt.title("Change Ocurred because 5 consecutive points outside UWL OR LWL")
                 plt.show()
+                '''
                 if s == True:
                     print("Concept change occured at position " + str((i-4)*(n+1)*3) + " of original attributes data")
                     return (i - 4)*(n+1)*3
@@ -310,7 +322,8 @@ def shewartDetect(sample,s):
          
     
     print("No Change detected using Shewart method")
-    plt.plot(sample) # Plot the converted variable smaple data 
+    '''
+    plt.plot(sample) # Plot the converted variable smaple data
     plt.plot([0, len(sample)], [UCL, UCL], 'r--', color='r')  # Plot the Upper Control Limit
     plt.plot([0, len(sample)], [LCL, LCL], 'r--', color='r') # Plot the Lower Control LIMIT
     plt.text(1, UCL - 0.05, 'UCL',color='r') # Label out UCL 
@@ -321,6 +334,7 @@ def shewartDetect(sample,s):
     plt.text(1, LWL + 0.05, 'LWL',color='r') # Label out LCL 
     plt.title("Converted Variable Plot from Original Attributes Data")
     plt.show()
+    '''
 
     return -1
 
