@@ -1,0 +1,21 @@
+Dingchao Zhang	Pipat Thontirawong
+0_negBinary.txt	204
+0_negTriple.txt	-1
+1_negBinary.txt	-1
+1_negTriple.txt	-1
+2_negBinary.txt	-1
+2_negTriple.txt	-1
+3_negBinary.txt	120
+3_posTriple_90.txt	-1
+4_negTriple.txt	-1
+4_posBinary_329.txt	276
+5_negTriple.txt	-1
+5_posBinary_140.txt	108
+6_negTriple.txt	-1
+6_posBinary_281.txt	228
+7_negBinary.txt	-1
+7_posTriple_86.txt	-1
+8_negBinary.txt	-1
+8_negTriple.txt	-1
+9_posBinary_674.txt	-1
+9_posTriple_53.txt	-1

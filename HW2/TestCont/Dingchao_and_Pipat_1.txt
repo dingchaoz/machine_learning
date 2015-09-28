@@ -1,0 +1,21 @@
+Dingchao Zhang	Pipat Thontirawong
+0_negVar.txt	-1
+0_posShiftUpMean_679.txt	51
+1_negMean.txt	-1
+1_negVar.txt	119
+2_negVar.txt	-1
+2_posShiftUpMean_787.txt	4
+3_negMean.txt	-1
+3_negVar.txt	-1
+4_negVar.txt	65
+4_posShiftUpMean_373.txt	396
+5_negMean.txt	14
+5_posShiftDownVar_689.txt	564
+6_negMean.txt	-1
+6_negVar.txt	414
+7_posShiftDownMean_531.txt	530
+7_posShiftUpVar_342.txt	424
+8_negVar.txt	-1
+8_posShiftUpMean_860.txt	543
+9_negMean.txt	248
+9_negVar.txt	-1
