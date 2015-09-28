@@ -1,7 +1,10 @@
 1negBinary.txt
+1negTriple.txt
 1_negMean.txt
+1_negVar.txt
+1_posBinary_846.txt
 1_posShiftDownVar_457.txt
-1_posTriple_58.txt
+1_posShiftUpMean_397.txt
 negBinary.txt
 negFlata.txt
 negFlatb.txt
@@ -15,10 +18,14 @@ posShiftUpVar_70.txt
 posTriple2_160.txt
 posTripleDouble_175.txt
 posTriple_175.txt
+team.txt
 -1
+84
 311
-240
+100
 -1
+240
+400
 -1
 -1
 -1
@@ -32,3 +39,4 @@ posTriple_175.txt
 156
 132
 132
+-1
