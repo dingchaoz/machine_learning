@@ -1,0 +1,19 @@
+Dingchao Zhang	Pipat Thontirawong
+negBinary.txt	-1
+negBinary1.txt	-1
+negFlata.txt	-1
+negFlatb.txt	-1
+negTriple.txt	-1
+negTriple_1.txt	-1
+negVar_1.txt	65
+negWithRare.txt	-1
+posBinary_150.txt	192
+posShiftDownMean_90.txt	88
+posShiftDownVar_257.txt	244
+posShiftUpMean_397.txt	400
+posShiftUpMean_70.txt	68
+posShiftUpVar_60.txt	-1
+posShiftUpVar_70.txt	69
+posTriple2_160.txt	156
+posTripleDouble_175.txt	132
+posTriple_175.txt	132

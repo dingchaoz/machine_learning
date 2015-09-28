@@ -1,0 +1,23 @@
+Chi-Square Test
+
+We tried Chi-Square test to detect changes in binary and categorical datasets. Chi-square compares distribution of two windows and test of the difference is significant. We tried varying the window size from 10 to 50 and varying the overlapping between the window size from 0 to 40. The file 'ChiSq/results.txt' shows that only window size = 50 and overlap = 40 does not give a false alarm on negBinary.txt and negTriple.txt. 
+
+As a result, we keep this Chi Square test in the binary and triple model as the second line of defense after the Shewart. We set the parameters to be quite strict (i.e. low significant level, high overlapping) in order to minimize false positive.
+
+Kolmogorov-Smirnov (KS) Test
+
+Kolmogorov-Smirnov test is another test that we use to check if the concept changes significantly. We tried KS test with our continuous data (i.e. mean and variance change). We chose KS test over Student's  t-test because KS test is a non-parametric test and is not limited to data with Gaussian normal distribution. 
+
+From 'KS/results.txt', you can see that we tried varying window size and the overlapping as we did with Chi Square. However, when the window is 20 or 30, KS test did a good job in datasets that don't have change. We get the best detection result at the window size of 20 and no overlapping. It detected all changes except posShiftUpVar_60.txt. Although KS detection is quite late (i.e. 97 vs. 90 in posShiftDownMean_90), we think late is better than never. 
+
+As a result, we chose to use KS with a window size = 20 as our third line of defense after Shewart and CUSUM. This should give us another safety net in case Shewart, which is quite precise in change position, fails to detect change. 
+
+Other Methods
+
+We also tried some other methods. One is Student's t-test. However, we are not sure whether the actual datasets are normally distributed or not and the small window size is usually not suitable for t-test. We decided not to implement t-test as part of our main model. Another method that we considered but later did not include in the model is the sequential probability ratio test (SPRT) which is the predecessor of CUSUM. 
+
+Test Data
+
+After tested the model with the datasets provided, we generated our own datasets to test our model. We use normal distribution to randomly generate data for mean and variance changes. Our datasets have 1000 observations. We know that our variance and mean changes can be difficult to detect because means and variances are randomly selected. Our attribute data, however, follow a uniform and Dirichlet distribution. 
+
+RESULT …..
