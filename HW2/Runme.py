@@ -5,7 +5,7 @@
 
 
 # import libraries
-get_ipython().magic('matplotlib inline')
+# get_ipython().magic('matplotlib inline')
 import numpy as np
 import matplotlib.pyplot as plt
 import scipy.stats as stats
