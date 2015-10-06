@@ -1,2 +1,4 @@
 https://www.youtube.com/watch?v=V3RJGWaYqxQ  Gradient Search
 https://www.youtube.com/watch?v=ulZW99jsMXY  Maximum Likely Hood Estimation
+http://scikit-learn.org/stable/modules/cross_validation.html Cross Validation and implementation in Python
+http://stats.stackexchange.com/questions/4961/what-is-regularization-in-plain-english  Regularization
