@@ -19,5 +19,13 @@ https://www.youtube.com/watch?v=tmDHl5PMKoo Bayesian Information Criterion
 https://www.khanacademy.org/math/linear-algebra/alternate_bases/eigen_everything/v/linear-algebra-introduction-to-eigenvalues-and-eigenvectors EigenVector
 https://www.youtube.com/watch?v=f9mZ8dSrVJA Principal Component Analysis
 https://www.youtube.com/watch?v=WKEGhyFx0Dg Partial Least Squares
-https://www.youtube.com/watch?v=UqYde-LULfs K nearest neigbor
+https://www.youtube.com/watch?v=k_7gMp5wh5A&list=PLBv09BD7ez_68OwSB97WXyIOvvI5nqi-3 K nearest neigbor
 https://www.youtube.com/watch?v=REypj2sy_5U Mixture Models EM Algorithm
+https://www.youtube.com/watch?v=qMTuMa86NzU Mixture Models GMM Algorithm
+https://www.youtube.com/watch?v=GVz6Y8r5AkY Hierachical Clustering K Means Top Down
+https://www.youtube.com/watch?v=XJ3194AmH40 Agglomerative Clusering Buttom Up
+https://www.youtube.com/watch?v=VMyXc3SiEqs Hierachical Distance Measure Link
+http://www.improvedoutcomes.com/docs/WebSiteDocs/Clustering/Jarvis-Patrick_Clustering_Overview.htm Jarvis-Patrick Clustering
+https://www.youtube.com/watch?v=HKj2ASG0DKQ Self Organizing Map Professor recommended
+https://www.youtube.com/watch?v=Jj2wEUZT2_w Clustering using Kohonen Self-Organizing Maps
+https://www.youtube.com/watch?v=bH6VnezBZfI Neural Network Intro
