@@ -29,3 +29,5 @@ http://www.improvedoutcomes.com/docs/WebSiteDocs/Clustering/Jarvis-Patrick_Clust
 https://www.youtube.com/watch?v=HKj2ASG0DKQ Self Organizing Map Professor recommended
 https://www.youtube.com/watch?v=Jj2wEUZT2_w Clustering using Kohonen Self-Organizing Maps
 https://www.youtube.com/watch?v=bH6VnezBZfI Neural Network Intro
+https://www.youtube.com/watch?v=Qt3Vv5KsnpA Partial Least Squares Multivariate Regression
+https://www.youtube.com/watch?v=UUxIXU_Ob6E Principle Component Analysis
