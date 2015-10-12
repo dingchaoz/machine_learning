@@ -18,7 +18,7 @@ def get_urls(main_url):
 
 # function to get text from each plays url
 def get_plays(url):
-    page = get_html(url)
+    page = get_html(url).lower()
     playsname = re.findall('<td class="play" align="center">(.*?)<', page, re.DOTALL)[0].strip() #name of plays
     act = int(url.rsplit('/', 1)[1].rsplit('.')[1]) #act
     scene = int(url.rsplit('/', 1)[1].rsplit('.')[2]) #scene
@@ -38,7 +38,6 @@ def get_plays(url):
         speech = [line.strip() for line in lines]
         names.append(name)
         speeches.append(speech)
-
     print(len(names), len(speeches))
 
     # load to pandas df
@@ -48,8 +47,40 @@ def get_plays(url):
     print(url + ' load complete')
     return df
 
+# function to get text from each prologue url
+def get_prologue(url):
+    page = get_html(url).lower()
+    playsname = re.findall('<td class="play" align="center">(.*?)<', page, re.DOTALL)[0].strip() #name of plays
+    act = int(url.rsplit('/', 1)[1].rsplit('.')[1]) #act
+    scene = int(url.rsplit('/', 1)[1].rsplit('.')[2]) #scene
+    title = re.findall('<title>(.*?)<', page, re.DOTALL)[0].strip() #title of work
+    speeches = []
+
+    # get speeches
+    speeches_region = re.split('</h3>', page)[1]
+
+    # get each speech
+    lines = re.findall('=[0-9+]>(.*?)</a', speeches_region, re.DOTALL) #get list of lines
+    if lines:
+        speech = [line.strip() for line in lines]
+        speeches.append(speech)
+    print(len(speeches))
+
+    # load to pandas df
+    df = pd.DataFrame(columns=['playname', 'title', 'act', 'scene', 'line', 'speaker', 'speech'])
+    for i in range(len(speeches)):
+        df.loc[i] = [playsname, title, act, scene, i, 'Prologue', speeches[i]]
+    print(url + ' load complete')
+    return df
 
 
+# function to get text from each poetry url
+def get_poetry(url):
+
+    return
+
+
+#### Main ####
 
 ## get all urls
 root = 'http://shakespeare.mit.edu'
@@ -63,12 +94,19 @@ plays_main_urls = [root + '/' + url for url in plays_main_urls] #add prefix
 
 ## get urls inside each plays
 plays_all_urls = []
+prologue_all_urls = []
 for url in plays_main_urls:
     prefix = re.findall('mit.edu/(.*?)/', url)[0]
     plays_urls = get_urls(url)
     plays_urls = [url for url in plays_urls if (url[-5:] == '.html' and url != 'full.html')]
-    plays_urls = [root + '/' + prefix + '/' + url for url in plays_urls] #add prefix
-    plays_all_urls.extend(plays_urls) #add to list
+
+    plays_only_urls = [url for url in plays_urls if (url[-7:] != '.0.html')] #exclude prologue
+    prologue_urls = [url for url in plays_urls if (url[-7:] == '.0.html')] #get prologue
+
+    plays_only_urls = [root + '/' + prefix + '/' + url for url in plays_only_urls] #add prefix
+    prologue_urls = [root + '/' + prefix + '/' + url for url in prologue_urls] #add prefix
+    plays_all_urls.extend(plays_only_urls) #add to list
+    prologue_all_urls.extend(prologue_urls) #add to list
 
 
 ## get texts from all plays in dataframe
@@ -78,6 +116,9 @@ for url in plays_all_urls:
     frames.append(get_plays(url))
     i += 1
     print(i)
+for url in prologue_all_urls:
+    frames.append(get_prologue(url))
 df = pd.concat(frames, ignore_index=True)
 df.to_csv('plays.txt', sep='\t') #write to tsv
 
+## doesn't work for 3henryvi.5.x
