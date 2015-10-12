@@ -1,0 +1,4 @@
+http://shakespeare.mit.edu/Poetry/LoversComplaint.html
+http://shakespeare.mit.edu/Poetry/RapeOfLucrece.html
+http://shakespeare.mit.edu/Poetry/VenusAndAdonis.html
+http://shakespeare.mit.edu/Poetry/elegy.html

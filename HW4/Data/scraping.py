@@ -104,11 +104,51 @@ def get_prologue(url):
     print(url + ' load complete')
     return df
 
+# function to get text from each poetry url --FIX THIS
+def get_poems(url):
+    page = get_html(url).lower()
+    print(page)
+    poem_name = re.findall('<h1>(.*?)<', page, re.DOTALL)[0].strip() #name of poem
+    poems = []
+
+    # get poem
+    poem_region = re.findall('<blockquote(.*?)</blockquote>', page, re.DOTALL)
+    for p in poem_region:
+        lines = re.findall('>(.*?)<', p, re.DOTALL)
+        if lines:
+            poem_lines = [line.strip() for line in lines]
+            poems.append(poem_lines)
+    print(len(poems))
+
+    # load to pandas df
+    df = pd.DataFrame(columns=['poem_name', 'poem'])
+    for i in range(len(poems)):
+        df.loc[i] = [poem_name, poems[i]]
+    print(url + ' load complete')
+    return df
+
 
 # function to get text from each poetry url
-def get_poetry(url):
+def get_sonnets(url):
+    page = get_html(url).lower()
+    print(page)
+    poem_name = re.findall('<h1>(.*?)<', page, re.DOTALL)[0].strip() #name of poem
+    poems = []
 
-    return
+    # get poem
+    poem_region = re.split('<blockquote', page, re.DOTALL)[1]
+    lines = re.findall('>(.*?)<', poem_region, re.DOTALL)
+    if lines:
+        poem_lines = [line.strip() for line in lines]
+        poems.append(poem_lines)
+    print(len(poems))
+
+    # load to pandas df
+    df = pd.DataFrame(columns=['poem_name', 'poem'])
+    for i in range(len(poems)):
+        df.loc[i] = [poem_name, poems[i]]
+    print(url + ' load complete')
+    return df
 
 
 ## get all urls to txt files
@@ -143,6 +183,16 @@ def save_urls():
         prologue_all_urls.extend(prologue_urls) #add to list
         plays_all_others_urls.extend(plays_other_urls) #add to list
 
+    ## get urls inside each poetry
+    poetry_all_urls = poetry_main_urls[1:] #get every urls except The Sonnets
+
+    ## get urls inside The Sonnets
+    sonnet_main_url = poetry_main_urls[0]
+    prefix = re.findall('mit.edu/(.*?)/', sonnet_main_url)[0]
+    sonnet_page = get_html(sonnet_main_url)
+    sonnet_urls = re.findall('<A HREF="(.*?)"', sonnet_page, re.DOTALL)
+    sonnet_urls = [root + '/' + prefix + '/' + url for url in sonnet_urls] #add prefix
+
     ## write to .txt
     with open('urls_plays.txt', 'w') as f:
         for x in plays_all_urls:
@@ -159,11 +209,20 @@ def save_urls():
             f.write(x)
             f.write('\n')
 
+    with open('urls_poetry.txt', 'w') as f:
+        for x in poetry_all_urls:
+            f.write(x)
+            f.write('\n')
+
+    with open('urls_sonnets.txt', 'w') as f:
+        for x in sonnet_urls:
+            f.write(x)
+            f.write('\n')
+
     return
 
 
 #### Main ####
-
 
 
 '''
@@ -198,3 +257,21 @@ df = pd.concat(frames, ignore_index=True)
 df.to_csv('all_plays.txt', sep='\t') #write to tsv
 '''
 
+## do it separately for poetry
+with open('urls_sonnets.txt') as f:
+    sonnets = f.read().splitlines()
+
+with open('urls_poetry.txt') as f:
+    poetry = f.read().splitlines()
+
+
+frames = []
+for url in poetry:
+    frames.append(get_poems(url))
+
+'''
+for url in sonnets:
+    frames.append(get_sonnets(url))
+'''
+df = pd.concat(frames, ignore_index=True)
+df.to_csv('poems.txt', sep='\t') #write to tsv
