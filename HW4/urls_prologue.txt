@@ -1,0 +1,10 @@
+http://shakespeare.mit.edu/pericles/pericles.1.0.html
+http://shakespeare.mit.edu/2henryiv/2henryiv.0.0.html
+http://shakespeare.mit.edu/henryv/henryv.1.0.html
+http://shakespeare.mit.edu/henryv/henryv.2.0.html
+http://shakespeare.mit.edu/henryv/henryv.3.0.html
+http://shakespeare.mit.edu/henryv/henryv.4.0.html
+http://shakespeare.mit.edu/henryv/henryv.5.0.html
+http://shakespeare.mit.edu/henryviii/henryviii.1.0.html
+http://shakespeare.mit.edu/romeo_juliet/romeo_juliet.1.0.html
+http://shakespeare.mit.edu/romeo_juliet/romeo_juliet.2.0.html
