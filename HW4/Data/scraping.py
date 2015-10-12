@@ -57,15 +57,15 @@ def get_other_plays(url):
     names = []
     speeches = []
 
-    # get speeches ---FIX THIS
-    speeches_region = re.split('speech1>', page)[1]
+    # get speeches
+    speeches_region = re.split('</h3>', page)[1]
 
     # get each speech
-    name_speeches = re.findall('<b>(.*?)</blockquote>', speeches_region, re.DOTALL) #name and speech
+    name_speeches = re.findall('<strong>(.*?)/blockquote>', speeches_region, re.DOTALL) #name and speech
     for s in name_speeches:
-        name = re.findall('(.*?)</b>', s, re.DOTALL)[0].strip() #get name
-        raw_speech = re.split('<blockquote>', s)[1] #get all lines
-        lines = re.findall('[0-9]>(.*?)</', raw_speech, re.DOTALL) #get list of lines
+        name = re.findall('(.*?)</strong>', s, re.DOTALL)[0].strip() #get name
+        raw_speech = re.split('<blockquote', s)[1] #get all lines
+        lines = re.findall('>(.*?)<', raw_speech, re.DOTALL) #get list of lines
         speech = [line.strip() for line in lines]
         names.append(name)
         speeches.append(speech)
@@ -165,32 +165,36 @@ def save_urls():
 #### Main ####
 
 
-## read urls from txt files
-with open('urls_plays.txt') as f:
-    plays = f.readlines()
-
-with open('urls_plays_other.txt') as f:
-    others = f.readlines()
-
-with open('urls_prologue.txt') as f:
-    prologues = f.readlines()
 
 '''
+## read urls from txt files
+with open('urls_plays.txt') as f:
+    plays = f.read().splitlines()
+
+with open('urls_plays_other.txt') as f:
+    others = f.read().splitlines()
+
+with open('urls_prologue.txt') as f:
+    prologues = f.read().splitlines()
+
 ## get texts from all plays in dataframe
 frames = []
 i = 0
+
 for url in plays:
     frames.append(get_plays(url))
     i += 1
     print(i)
+
 for url in others:
-    frames.append(get_others(url))
+    frames.append(get_other_plays(url))
     i += 1
     print(i)
+
 for url in prologues:
     frames.append(get_prologue(url))
+
 df = pd.concat(frames, ignore_index=True)
-df.to_csv('allplays.txt', sep='\t') #write to tsv
+df.to_csv('all_plays.txt', sep='\t') #write to tsv
 '''
 
-## doesn't work for 3henryvi.5.x
