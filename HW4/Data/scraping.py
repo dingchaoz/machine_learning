@@ -107,12 +107,14 @@ def get_prologue(url):
 # function to get text from each poetry url --FIX THIS
 def get_poems(url):
     page = get_html(url).lower()
-    print(page)
     poem_name = re.findall('<h1>(.*?)<', page, re.DOTALL)[0].strip() #name of poem
     poems = []
 
     # get poem
-    poem_region = re.findall('<blockquote(.*?)</blockquote>', page, re.DOTALL)
+    poem_region1 = re.findall('<blockquote(.*?)</blockquote>', page, re.DOTALL)
+    poem_region2 = re.findall('<p(.*?)/p>', page, re.DOTALL)
+    poem_region3 = re.findall('<tr(.*?)/tr>', page, re.DOTALL)
+    poem_region = poem_region1 + poem_region2 + poem_region3
     for p in poem_region:
         lines = re.findall('>(.*?)<', p, re.DOTALL)
         if lines:
@@ -131,7 +133,6 @@ def get_poems(url):
 # function to get text from each poetry url
 def get_sonnets(url):
     page = get_html(url).lower()
-    print(page)
     poem_name = re.findall('<h1>(.*?)<', page, re.DOTALL)[0].strip() #name of poem
     poems = []
 
@@ -224,7 +225,6 @@ def save_urls():
 
 #### Main ####
 
-
 '''
 ## read urls from txt files
 with open('urls_plays.txt') as f:
@@ -255,7 +255,6 @@ for url in prologues:
 
 df = pd.concat(frames, ignore_index=True)
 df.to_csv('all_plays.txt', sep='\t') #write to tsv
-'''
 
 ## do it separately for poetry
 with open('urls_sonnets.txt') as f:
@@ -264,14 +263,14 @@ with open('urls_sonnets.txt') as f:
 with open('urls_poetry.txt') as f:
     poetry = f.read().splitlines()
 
-
 frames = []
 for url in poetry:
     frames.append(get_poems(url))
 
-'''
 for url in sonnets:
     frames.append(get_sonnets(url))
-'''
+
 df = pd.concat(frames, ignore_index=True)
-df.to_csv('poems.txt', sep='\t') #write to tsv
+df.to_csv('all_poems.txt', sep='\t') #write to tsv
+
+'''
