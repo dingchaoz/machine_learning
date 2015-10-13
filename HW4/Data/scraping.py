@@ -1,9 +1,6 @@
 import requests
 import re
-import numpy as np
 import pandas as pd
-from threading import Thread
-from queue import Queue
 
 # function to get html text
 def get_html(url):
@@ -224,53 +221,85 @@ def save_urls():
 
 
 #### Main ####
+if __name__ == '__main__':
 
-'''
-## read urls from txt files
-with open('urls_plays.txt') as f:
-    plays = f.read().splitlines()
+    '''
+    ## read urls from txt files
+    with open('urls_plays.txt') as f:
+        plays = f.read().splitlines()
 
-with open('urls_plays_other.txt') as f:
-    others = f.read().splitlines()
+    with open('urls_plays_other.txt') as f:
+        others = f.read().splitlines()
 
-with open('urls_prologue.txt') as f:
-    prologues = f.read().splitlines()
+    with open('urls_prologue.txt') as f:
+        prologues = f.read().splitlines()
 
-## get texts from all plays in dataframe
-frames = []
-i = 0
+    ## get texts from all plays in dataframe
+    frames = []
+    i = 0
 
-for url in plays:
-    frames.append(get_plays(url))
-    i += 1
-    print(i)
+    for url in plays:
+        frames.append(get_plays(url))
+        i += 1
+        print(i)
 
-for url in others:
-    frames.append(get_other_plays(url))
-    i += 1
-    print(i)
+    for url in others:
+        frames.append(get_other_plays(url))
+        i += 1
+        print(i)
 
-for url in prologues:
-    frames.append(get_prologue(url))
+    for url in prologues:
+        frames.append(get_prologue(url))
 
-df = pd.concat(frames, ignore_index=True)
-df.to_csv('all_plays.txt', sep='\t') #write to tsv
+    df = pd.concat(frames, ignore_index=True)
 
-## do it separately for poetry
-with open('urls_sonnets.txt') as f:
-    sonnets = f.read().splitlines()
+    ## assign genre
+    df.insert(1, 'genre', 0)
 
-with open('urls_poetry.txt') as f:
-    poetry = f.read().splitlines()
+    comedy = ["all's well that ends well", 'as you like it', 'the comedy of errors',
+              'cymbeline', 'loves labours lost', 'measure for measure', 'the merry wives of windsor',
+              'the merchant of venice', "a midsummer night's dream", 'much ado about nothing',
+              'pericles, prince of tyre', 'the taming of the shrew', 'the tempest',
+              'troilus and cressida', 'twelfth night', 'two gentlemen of verona', "winter's tale"]
 
-frames = []
-for url in poetry:
-    frames.append(get_poems(url))
+    history = ['the first part of king henry the fourth', 'the second part of king henry the fourth',
+               'the life of king henry the fifth', 'the first part of king henry the sixth',
+               'the second part of king henry the sixth', 'the third part of king henry the sixth',
+               'the life of king henry the eighth', 'the life and death of king john',
+               'the life and death of richard the second', 'the life and death of richard the third']
 
-for url in sonnets:
-    frames.append(get_sonnets(url))
+    tragedy = ['antony and cleopatra', 'the tragedy of coriolanus', 'the tragedy of hamlet, prince of denmark',
+               'the life and death of julius caesar', 'king lear', 'the tragedy of macbeth',
+               'othello, the moore of venice', 'romeo and juliet', 'timon of athens', 'titus andronicus']
 
-df = pd.concat(frames, ignore_index=True)
-df.to_csv('all_poems.txt', sep='\t') #write to tsv
+    def findCat(x):
+        if x in comedy:
+            return 1
+        elif x in history:
+            return 2
+        elif x in tragedy:
+            return 3
+        else:
+            return -1
 
-'''
+    df['genre'] = df['playname'].map(lambda x: findCat(x))
+    df.to_csv('all_plays.txt', sep='\t', index=False) #write to tsv
+
+    ## do it separately for poetry
+    with open('urls_sonnets.txt') as f:
+        sonnets = f.read().splitlines()
+
+    with open('urls_poetry.txt') as f:
+        poetry = f.read().splitlines()
+
+    frames = []
+    for url in poetry:
+        frames.append(get_poems(url))
+
+    for url in sonnets:
+        frames.append(get_sonnets(url))
+
+    df = pd.concat(frames, ignore_index=True)
+    df.to_csv('all_poems.txt', sep='\t', index=False) #write to tsv
+
+    '''
