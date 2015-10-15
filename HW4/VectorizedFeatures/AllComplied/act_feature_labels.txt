@@ -1,0 +1,187 @@
+all's well that ends well_1.0
+all's well that ends well_2.0
+all's well that ends well_3.0
+all's well that ends well_4.0
+all's well that ends well_5.0
+as you like it_1.0
+as you like it_2.0
+as you like it_3.0
+as you like it_4.0
+as you like it_5.0
+the comedy of errors_1.0
+the comedy of errors_2.0
+the comedy of errors_3.0
+the comedy of errors_4.0
+the comedy of errors_5.0
+cymbeline_1.0
+cymbeline_2.0
+cymbeline_3.0
+cymbeline_4.0
+cymbeline_5.0
+loves labours lost_1.0
+loves labours lost_2.0
+loves labours lost_3.0
+loves labours lost_4.0
+loves labours lost_5.0
+measure for measure_1.0
+measure for measure_2.0
+measure for measure_3.0
+measure for measure_4.0
+measure for measure_5.0
+the merry wives of windsor_1.0
+the merry wives of windsor_2.0
+the merry wives of windsor_3.0
+the merry wives of windsor_4.0
+the merry wives of windsor_5.0
+the merchant of venice_1.0
+the merchant of venice_2.0
+the merchant of venice_3.0
+the merchant of venice_4.0
+the merchant of venice_5.0
+a midsummer night's dream_1.0
+a midsummer night's dream_2.0
+a midsummer night's dream_3.0
+a midsummer night's dream_4.0
+a midsummer night's dream_5.0
+much ado about nothing_1.0
+much ado about nothing_2.0
+much ado about nothing_3.0
+much ado about nothing_4.0
+much ado about nothing_5.0
+pericles, prince of tyre_1.0
+pericles, prince of tyre_2.0
+pericles, prince of tyre_3.0
+pericles, prince of tyre_4.0
+pericles, prince of tyre_5.0
+the taming of the shrew_0.0
+the taming of the shrew_1.0
+the taming of the shrew_2.0
+the taming of the shrew_3.0
+the taming of the shrew_4.0
+the taming of the shrew_5.0
+the tempest_1.0
+the tempest_2.0
+the tempest_3.0
+the tempest_4.0
+the tempest_5.0
+troilus and cressida_1.0
+troilus and cressida_2.0
+troilus and cressida_3.0
+troilus and cressida_4.0
+troilus and cressida_5.0
+twelfth night_1.0
+twelfth night_2.0
+twelfth night_3.0
+twelfth night_4.0
+twelfth night_5.0
+two gentlemen of verona_1.0
+two gentlemen of verona_2.0
+two gentlemen of verona_3.0
+two gentlemen of verona_4.0
+two gentlemen of verona_5.0
+winter's tale_1.0
+winter's tale_2.0
+winter's tale_3.0
+winter's tale_4.0
+winter's tale_5.0
+the first part of king henry the fourth_1.0
+the first part of king henry the fourth_2.0
+the first part of king henry the fourth_3.0
+the first part of king henry the fourth_4.0
+the first part of king henry the fourth_5.0
+the second part of king henry the fourth_1.0
+the second part of king henry the fourth_2.0
+the second part of king henry the fourth_3.0
+the second part of king henry the fourth_4.0
+the second part of king henry the fourth_5.0
+the second part of king henry the fourth_0.0
+the life of king henry the fifth_1.0
+the life of king henry the fifth_2.0
+the life of king henry the fifth_3.0
+the life of king henry the fifth_4.0
+the life of king henry the fifth_5.0
+the first part of king henry the sixth_1.0
+the first part of king henry the sixth_2.0
+the first part of king henry the sixth_3.0
+the first part of king henry the sixth_4.0
+the first part of king henry the sixth_5.0
+the second part of king henry the sixth_1.0
+the second part of king henry the sixth_2.0
+the second part of king henry the sixth_3.0
+the second part of king henry the sixth_4.0
+the second part of king henry the sixth_5.0
+the third part of king henry the sixth_1.0
+the third part of king henry the sixth_2.0
+the third part of king henry the sixth_3.0
+the third part of king henry the sixth_4.0
+the third part of king henry the sixth_5.0
+the life of king henry the eighth_1.0
+the life of king henry the eighth_2.0
+the life of king henry the eighth_3.0
+the life of king henry the eighth_4.0
+the life of king henry the eighth_5.0
+the life and death of king john_1.0
+the life and death of king john_2.0
+the life and death of king john_3.0
+the life and death of king john_4.0
+the life and death of king john_5.0
+the life and death of richard the second_1.0
+the life and death of richard the second_2.0
+the life and death of richard the second_3.0
+the life and death of richard the second_4.0
+the life and death of richard the second_5.0
+the life and death of richard the third_1.0
+the life and death of richard the third_2.0
+the life and death of richard the third_3.0
+the life and death of richard the third_4.0
+the life and death of richard the third_5.0
+antony and cleopatra_1.0
+antony and cleopatra_2.0
+antony and cleopatra_3.0
+antony and cleopatra_4.0
+antony and cleopatra_5.0
+the tragedy of coriolanus_1.0
+the tragedy of coriolanus_2.0
+the tragedy of coriolanus_3.0
+the tragedy of coriolanus_4.0
+the tragedy of coriolanus_5.0
+the tragedy of hamlet, prince of denmark_1.0
+the tragedy of hamlet, prince of denmark_2.0
+the tragedy of hamlet, prince of denmark_3.0
+the tragedy of hamlet, prince of denmark_4.0
+the tragedy of hamlet, prince of denmark_5.0
+the life and death of julius caesar_1.0
+the life and death of julius caesar_2.0
+the life and death of julius caesar_3.0
+the life and death of julius caesar_4.0
+the life and death of julius caesar_5.0
+king lear_1.0
+king lear_2.0
+king lear_3.0
+king lear_4.0
+king lear_5.0
+the tragedy of macbeth_1.0
+the tragedy of macbeth_2.0
+the tragedy of macbeth_3.0
+the tragedy of macbeth_4.0
+the tragedy of macbeth_5.0
+othello, the moore of venice_1.0
+othello, the moore of venice_2.0
+othello, the moore of venice_3.0
+othello, the moore of venice_4.0
+othello, the moore of venice_5.0
+romeo and juliet_1.0
+romeo and juliet_2.0
+romeo and juliet_3.0
+romeo and juliet_4.0
+romeo and juliet_5.0
+timon of athens_1.0
+timon of athens_2.0
+timon of athens_3.0
+timon of athens_4.0
+timon of athens_5.0
+titus andronicus_1.0
+titus andronicus_2.0
+titus andronicus_3.0
+titus andronicus_4.0
+titus andronicus_5.0
