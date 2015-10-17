@@ -1,0 +1,1 @@
+['when shall we three meet again', 'in thunder, lightning, or in rain?']["when the hurlyburly's done,", "when the battle's lost and won."]['that will be ere the set of sun.']['where the place?']['upon the heath.']['there to meet with macbeth.']['i come, graymalkin!']['paddock calls.']['anon.']['fair is foul, and foul is fair:', 'hover through the fog and filthy air.']
