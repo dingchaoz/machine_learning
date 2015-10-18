@@ -1,0 +1,1 @@
+num_letters,num_words,num_sentences,CLI_score,avglen_words,avglen_sentences
